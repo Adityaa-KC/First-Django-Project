@@ -1,15 +1,15 @@
 from django.shortcuts import render, redirect
-from .forms import StudentApplicationForm
+from .forms import AdmissionForm
 
-def home(request):
-    return render(request, 'admissions/home.html')
-
-def apply(request):
+def admission_view(request):
     if request.method == 'POST':
-        form = StudentApplicationForm(request.POST, request.FILES)
+        form = AdmissionForm(request.POST)
         if form.is_valid():
-            form.save()
-            return render(request, 'admissions/success.html')
+            # Process form data here
+            # You can save it to the database or print it
+            print(form.cleaned_data)
+            return redirect('thank_you')  # redirect to success page
     else:
-        form = StudentApplicationForm()
-    return render(request, 'admissions/apply.html', {'form': form})
+        form = AdmissionForm()
+    
+    return render(request, 'admission_form.html', {'form': form})
