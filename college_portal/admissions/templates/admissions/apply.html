@@ -1,108 +1,56 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>Student Admission Form</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f3f4f6;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      margin: 0;
-    }
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
 
-    .form-container {
-      background: #fff;
-      padding: 40px;
-      max-width: 600px;
-      width: 100%;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      border-radius: 12px;
-    }
-
-    h2 {
-      text-align: center;
-      color: #333;
-      margin-bottom: 30px;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: 600;
-      color: #555;
-    }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 10px 14px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 16px;
-      transition: border-color 0.3s ease;
-    }
-
-    input:focus, select:focus, textarea:focus {
-      outline: none;
-      border-color: #007bff;
-    }
-
-    button {
-      width: 100%;
-      padding: 12px;
-      background-color: #007bff;
-      color: white;
-      font-size: 16px;
-      font-weight: 600;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #0056b3;
-    }
-
-    .form-error {
-      color: red;
-      font-size: 14px;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-    }
-  </style>
+    <title>Apply Now</title>
+    <link rel="stylesheet" href="{% static 'admissions/css/style.css' %}">
 </head>
 <body>
-  <div class="form-container">
+<div class="form-container">
     <h2>Student Admission Form</h2>
-    <form method="POST" action="" enctype="multipart/form-data">
-      {% csrf_token %}
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+    
+        <label for="id_full_name">Full Name:</label>
+        {{ form.full_name }}
 
-      {% for field in form %}
-        <div class="form-group">
-          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-          {{ field }}
-          {% if field.errors %}
-            <div class="form-error">{{ field.errors|striptags }}</div>
-          {% endif %}
-        </div>
-      {% endfor %}
+        <label for="id_course">Select Course:</label>
+        {{ form.course }}
 
-      <button type="submit">Submit Application</button>
+        <label for="id_phone">Phone:</label>
+        {{ form.phone }}
+    
+        <label for="id_email">Email:</label>
+        {{ form.email }}
+    
+        <label for="id_dob">Date of Birth:</label>
+        {{ form.dob }}
+
+        <label for="id_address">Address:</label>
+        {{ form.address }}
+    
+        <!-- ✅ Upload Photo -->
+        <label for="id_photo">Upload Photo:</label>
+        {{ form.photo }}
+        <img id="photoPreview" style="max-height: 100px; margin-top: 10px;" />
+    
+        <!-- ✅ Upload Signature -->
+        <label for="id_signature">Upload Signature:</label>
+        {{ form.signature }}
+        <img id="signPreview" style="max-height: 100px; margin-top: 10px;" />
+    
+        <button type="submit">Submit</button>
+    
+        <!-- ✅ Print Button -->
+        <button type="button" class="print-btn" onclick="window.print()">🖨️ Print Form</button>
     </form>
-  </div>
+</div>
+<script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

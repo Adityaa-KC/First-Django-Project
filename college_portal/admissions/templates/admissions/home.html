@@ -1,11 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>College Portal</title>
+    <meta charset="UTF-8">
+    <title>Welcome | College Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #4b6cb7, #182848);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        img {
+            height: 120px;
+            margin-bottom: 30px;
+        }
+
+        a {
+            display: inline-block;
+            padding: 14px 28px;
+            background-color: #ffcc00;
+            color: #000;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: 0.3s ease;
+            margin-bottom: 60px; /* <-- Added spacing here */
+        }
+
+        a:hover {
+            background-color: #ffc107;
+            transform: scale(1.05);
+        }
+
+        footer {
+            position: absolute;
+            bottom: 15px;
+            font-size: 14px;
+            color: #ddd;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to Our College ANDC</h1>
-    <img src = https://www.andcollege.du.ac.in/assets/front/images/logo.png height = 100><br>
-    <a href="{% url 'apply' %}">Apply for Admission</a>
+    <h1>Welcome to Our College Portal</h1>
+    <img src="https://upload.wikimedia.org/wikipedia/en/8/84/University_of_Delhi.png" alt="University Logo">
+    <br>
+    <a href="/apply/">Apply for Admission</a>
+
+    <footer>
+        &copy; 2025 College Admission Portal. All rights reserved.
+    </footer>
 </body>
 </html>
